@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerChatEvent;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
@@ -58,5 +59,12 @@ public class SSListener implements Listener {
 		ResultSet pData = sql.query("SELECT * FROM stats WHERE player='"+name+"'");
 		pData.first();
 		sql.edit("UPDATE stats SET broke="+(pData.getInt("broke")+1)+" WHERE player='"+name+"'");
+	}
+	@EventHandler
+	public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent e) throws SQLException {
+		String name = e.getPlayer().getName();
+		ResultSet pData = sql.query("SELECT * FROM stats WHERE player='"+name+"'");
+		pData.first();
+		sql.edit("UPDATE stats SET cmds="+(pData.getInt("cmds")+1)+" WHERE player='"+name+"'");
 	}
 }
