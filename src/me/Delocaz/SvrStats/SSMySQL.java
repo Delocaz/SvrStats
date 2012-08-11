@@ -11,7 +11,7 @@ public class SSMySQL {
 	public SSMySQL(SvrStats svrStats) {
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://"+svrStats.getConfig().getString("url")+":"+svrStats.getConfig().getString("port")+"/"+svrStats.getConfig().getString("database"), svrStats.getConfig().getString("username"), svrStats.getConfig().getString("password"));
-			edit("CREATE TABLE IF NOT EXISTS `stats` (`player` varchar(16) NOT NULL, `joins` int(11) NOT NULL, `lastjoin` int(11) NOT NULL, `playtime` int(11) NOT NULL, `firstjoin` int(11) NOT NULL, `chatchar` int(11) NOT NULL, `chats` int(11) NOT NULL, `placed` int(11) NOT NULL, `broke` int(11) NOT NULL, `cmds` int(11) NOT NULL) ENGINE=MyISAM DEFAULT CHARSET=latin1;");
+			edit("CREATE TABLE IF NOT EXISTS `stats` (`player` varchar(16) NOT NULL, `joins` int(11) NOT NULL, `lastjoin` int(11) NOT NULL, `playtime` int(11) NOT NULL, `firstjoin` int(11) NOT NULL, `chatchar` int(11) NOT NULL, `chats` int(11) NOT NULL, `placed` int(11) NOT NULL, `broke` int(11) NOT NULL, `cmds` int(11) NOT NULL, `kills` int(11) NOT NULL, `torches` int(11) NOT NULL, `portal` int(11) NOT NULL) ENGINE=MyISAM DEFAULT CHARSET=latin1;");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
